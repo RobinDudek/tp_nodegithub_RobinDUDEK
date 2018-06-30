@@ -1,0 +1,25 @@
+{
+  "name": "tp_nodegithub_robindudek",
+  "version": "1.0.0",
+  "description": "liste les repos github grâce à node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
+  },
+  "keywords": [
+    "github",
+    "node",
+    "trendings",
+    "repos"
+  ],
+  "author": "RobinDUDEK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK/issues"
+  },
+  "homepage": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK#readme"
+}
