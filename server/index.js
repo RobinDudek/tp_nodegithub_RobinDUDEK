@@ -17,15 +17,15 @@ const app = express();
 const redisclient = Redis.createClient();
 const server = http.createServer(app);
 
-console/log("hello");
+console.log("hello");
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
-  console/log("route /");
+  console.log("route /");
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
 app.get("/repos", (req, res) => {
-  console/log("route /repos");
+  console.log("route /repos");
   redisclient.get(repos, function(error, result){
     //si j'ai des données en cache sur la clé repos
     if(result !== null) {
