@@ -2,13 +2,11 @@
   "name": "tp_nodegithub_robindudek",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/index.js",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.16.3",
     "http": "0.0.0",
     "https": "^1.0.0",
-    "jquery": "^3.3.1",
-    "node": "^10.5.0",
     "path": "^0.12.7",
     "redis": "^2.8.0"
   },
@@ -22,9 +20,5 @@
     "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
   },
   "author": "Robin DUDEK",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK/issues"
-  },
-  "homepage": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK#readme"
+  "license": "UNLICENSED"
 }
