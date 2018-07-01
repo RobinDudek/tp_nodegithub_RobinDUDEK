@@ -15,7 +15,7 @@
 
     // C'est le on Document ready de jQuery
     $(function(){
-      console.log("hello");
+      console.log("html js");
 
       $.ajax({
         url: '/repos',
@@ -24,7 +24,9 @@
         success: function(data) {
           console.log(data);
         },
-        error: function
+        error: function(error) {
+          console.log("error");
+        }
       });
     });
 
