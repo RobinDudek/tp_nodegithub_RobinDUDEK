@@ -15,6 +15,10 @@
     "start": "echo hello world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engine": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
