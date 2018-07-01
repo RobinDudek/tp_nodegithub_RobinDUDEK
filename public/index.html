@@ -19,7 +19,7 @@
     </style>
   </head>
   <body>
-    <button id="loginButton">Se conecter avec Github</button>
+    <button id="loginButton">Se connecter avec Github</button>
     <h1>Liste des repos Trending</h1>
 
     <div id="reposList"></div>
@@ -75,7 +75,7 @@
         success: function(data) {
           console.log(data);
           data.items.forEach(function(repo) {
-            divRepo = $("<div class='repo' style='width: 100%; height: 50px;'><span style='font-size:16px; font-style: bold;'>" + repo.full_name +"</span><br><span style='font-size: 12px;'>"+ repo.description +"</span></div><br>");
+            divRepo = $("<div class='repo'><span style='font-size:16px; font-style: bold;'>" + repo.full_name +"</span><br><span style='font-size: 12px;'>"+ repo.description +"</span></div><br>");
             if(isLogged) {
               $("<button onclick=starRepo('PUT',"+ repo.id +", true) style='height: 30px; width: 50px; float: right;'>Stars</button>").appendTo(divRepo);
             }
