@@ -22,7 +22,8 @@
         type: 'GET',
         success: function(data) {
           console.log(data);
-          $.each(data, function(repo) {
+          data.items.forEach(function(repo) {
+            
             $("#reposList").append("<div style='width: 100%; height: 50px;'><span>" + repo.name +"</span></div><br>");
           });
         },
