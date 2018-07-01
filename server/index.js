@@ -41,8 +41,7 @@ app.get("/repos", (req, res) => {
       try {
         console.log("repos pas en cache");
         //sinon j'appelle l'Api de Github
-        console.log("JSON:",  json);
-        var json = githubApi.getAllRepos()
+        var json = await githubApi.getAllRepos()
         .then(
           console.log("JSON:",  json);
           //on met en cache pendant une heure => 3600 secondes
