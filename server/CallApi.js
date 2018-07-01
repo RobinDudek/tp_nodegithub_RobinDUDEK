@@ -6,11 +6,11 @@ var CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 var app = express();
 
 class CallApi {
-  getAllRepos() {
+  async getAllRepos() {
     console.log(new Date());
     var date = new Date();
 
-    fetch(url + '/search/repositories?q=stars:>=500')
+    fetch(url + '/search/repositories?q=stars:>=1000')
     .then(res => res.json())
     .then(json => {
       return json;
