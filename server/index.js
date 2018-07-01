@@ -4,6 +4,8 @@ const http = require("http");
 const redis = require("redis");
 
 const PUBLIC_FOLDER = path.join(__dirname, "../public");
+
+console.log(PUBLIC_FOLDER);
 //const PORT = process.env.PORT || 5000;
 const PORT = 5000;
 //const REDIS_PORT = process.env.REDIS_PORT || 6367;
@@ -59,8 +61,10 @@ redisclient.on('error', err => {
 });
 
 console.log("on affiche le public folder");
-app.use(express.static('public'));
+app.use('/', express.static(PUBLIC_FOLDER));
 
 server.listen(PORT, () => {
     console.log(`Server started on port ${server.address().port}`);
 });
+
+console.log("EOF ./server/index.js");
