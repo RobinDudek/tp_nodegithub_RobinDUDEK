@@ -15,7 +15,7 @@ const githubApi = new CallApi();
 
 
 const app = express();
-const redisclient = Redis.createClient(REDIS_HOST, REDIS_PORT);
+const redisclient = Redis.createClient(REDIS_PORT, REDIS_HOST);
 const server = http.createServer(app);
 
 console.log("hello");
