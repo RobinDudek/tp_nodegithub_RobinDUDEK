@@ -18,14 +18,14 @@ const server = http.createServer(app);
 
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
-  console.log("route /");
-  //pour réinitialiser le cache au chargement de la page
+  //Je n'arrive pas a récupérer le json se trouvais dans le cache
+  //du coup je réinitialise le cache au chargement de la page
     redisclient.del('repos');
+
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
 app.get("/repos", (req, res) => {
-  console.log("route /repos");
   redisclient.get('repos', function(error, result){
     if (error) console.log(error);
       //si j'ai des données en cache sur la clé repos
@@ -33,7 +33,7 @@ app.get("/repos", (req, res) => {
       //Je renvoi direct le résultat
       console.log("repos en cache");
       console.log(JSON.parse(result));
-      res.send(JSON.parse(result));
+      res.send(result);
     } else {
       try {
         console.log("repos pas en cache");
