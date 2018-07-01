@@ -36,9 +36,8 @@ app.get("/repos", (req, res) => {
     } else {
       try {
         //sinon j'appelle l'Api de Github
-        var json = githubApi.getAllRepos();
         //on met en cache pendant une heure => 3600 secondes
-        redisclient.setex('repos', 3600, JSON.stringify(json));
+        redisclient.set('repos', 3600, JSON.stringify(githubApi.getAllRepos()));
         //et j'envoie le résultat
         res.send(json);
       } catch(error) {
@@ -50,7 +49,7 @@ app.get("/repos", (req, res) => {
 
 redisclient.on('error', err => {
   // handle the err here or just ignore them
-  console.log("redis error");
+  console.log(err);
 });
 
 app.use(express.static(PUBLIC_FOLDER));
