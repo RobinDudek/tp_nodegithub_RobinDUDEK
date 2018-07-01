@@ -13,19 +13,62 @@
         color:#CC1100;
         background-color:#FFFFFF
       }
+      #loginButton {
+        background-color: rgb(142, 68, 173);
+        color: white;
+      }
     </style>
   </head>
   <body>
+    <button id="loginButton">Se conecter avec Github</button>
     <h1>Liste des repos Trending</h1>
 
     <div id="reposList"></div>
 
     <script>
+    var isLogged = false;
+    var user;
 
-    // C'est le on Document ready de jQuery
-    $(function(){
-      console.log("html js");
+    function login() {
+      $.ajax({
+        url: '/login',
+        dataType: 'json',
+        type: 'GET',
+        success: function(data) {
+          console.log("Je suis connecté");
+          isLogged = true;
+          user = data;
+        },
+        error: function(error) {
+          console.log("Erreur lors de la connection");
+        }
+      });
+    }
 
+    function starRepo(_method, _repo, _isGetMethod) {
+      $.ajax({
+        url: '/star/'+ user.id +'/'+_repo,
+        dataType: 'json',
+        type: _method,
+        success: function(data) {
+          console.log("On a un résultat");
+          if(data.status == 204 && _isGetMethod) {
+            starRepo('DELETE', _repo, false);
+          } else if(data.status == 404 && _isGetMethod) {
+            starRepo('PUT', _repo, false);
+          //si la requete n'est pas GET, alors je viens de star ou unstar un repos
+          //je peux donc lister à nouveau les repos
+          } else {
+              listRepos();
+          }
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    }
+
+    function listRepos() {
       $.ajax({
         url: '/repos',
         dataType: 'json',
@@ -33,14 +76,22 @@
         success: function(data) {
           console.log(data);
           data.items.forEach(function(repo) {
-
-            $("#reposList").append("<div class='repo' style='width: 100%; height: 50px;'><span style='font-size:16px; font-style: bold;'>" + repo.fullname +"</span><br><span style='font-size: 12px;'>"+ repo.description +"</span></div><br>");
+            divRepo = $("<div class='repo' style='width: 100%; height: 50px;'><span style='font-size:16px; font-style: bold;'>" + repo.full_name +"</span><br><span style='font-size: 12px;'>"+ repo.description +"</span></div><br>");
+            if(isLogged) {
+              $("<button onclick=starRepo('PUT',"+ repo.id +", true) style='height: 30px; width: 50px; float: right;'>Stars</button>").appendTo(divRepo);
+            }
+            $("#reposList").append(divRepo);
           });
         },
         error: function(error) {
           console.log("error");
         }
       });
+    }
+
+    // C'est le on Document ready de jQuery
+    $(function(){
+      listRepos();
     });
 
 
