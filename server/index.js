@@ -48,6 +48,11 @@ app.get("/repos", (req, res) => {
   });
 });
 
+redisclient.on('error', err => {
+  // handle the err here or just ignore them
+  console.log("redis error");
+});
+
 app.use(express.static(PUBLIC_FOLDER));
 
 server.listen(PORT, () => {
