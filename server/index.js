@@ -9,7 +9,7 @@ const PORT = 5000;
 //const REDIS_PORT = process.env.REDIS_PORT || 6367;
 const REDIS_PORT = 6367;
 
-const CallApi = require("./CallApi");
+const CallApi = require('./CallApi');
 const githubApi = new CallApi();
 
 
@@ -33,7 +33,7 @@ app.get("/repos", (req, res) => {
       res.send(repos);
     } else {
       //sinon j'appelle l'Api de Github
-      var json = callApi.getAllRepos();
+      var json = githubApi.getAllRepos();
       //on met en cache pendant une heure => 3600 secondes
       redisclient.setex(repos, 3600, JSON.stringify(json));
       //et j'envoie le résultat

@@ -4,10 +4,6 @@ var CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
 class CallApi {
-  constructor() {
-
-  }
-
   getAllRepos() {
     var options = {
       host: url,
