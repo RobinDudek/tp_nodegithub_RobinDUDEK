@@ -38,8 +38,9 @@ app.get("/repos", (req, res) => {
       try {
         console.log("repos pas en cache");
         //sinon j'appelle l'Api de Github
+        var json = JSON.stringify(githubApi.getAllRepos());
         //on met en cache pendant une heure => 3600 secondes
-        redisclient.set('repos', 3600, JSON.stringify(githubApi.getAllRepos()));
+        redisclient.set('repos', 3600, json);
         //et j'envoie le résultat
         res.send(json);
       } catch(error) {
