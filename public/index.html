@@ -3,6 +3,16 @@
     <link rel="shortcut icon" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
+      .repo {
+        width: 100%; height: 40px;
+      }
+      .repo:nth-child(even) {
+        background-color:#CCCCCC;
+      }
+      .repo:nth-child(odd) {
+        color:#CC1100;
+        background-color:#FFFFFF
+      }
     </style>
   </head>
   <body>
@@ -23,8 +33,8 @@
         success: function(data) {
           console.log(data);
           data.items.forEach(function(repo) {
-            
-            $("#reposList").append("<div style='width: 100%; height: 50px;'><span>" + repo.name +"</span></div><br>");
+
+            $("#reposList").append("<div class='repo' style='width: 100%; height: 50px;'><span style='font-size:16px; font-style: bold;'>" + repo.fullname +"</span><br><span style='font-size: 12px;'>"+ repo.description +"</span></div><br>");
           });
         },
         error: function(error) {
