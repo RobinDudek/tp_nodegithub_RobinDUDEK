@@ -3,7 +3,7 @@ const express = require("express");
 const http = require("http");
 const redis = require("redis");
 
-const PUBLIC_FOLDER = path.join(__dirname, "../../public");
+const PUBLIC_FOLDER = path.join(__dirname, "../public");
 
 console.log(__dirname);
 console.log(PUBLIC_FOLDER);
