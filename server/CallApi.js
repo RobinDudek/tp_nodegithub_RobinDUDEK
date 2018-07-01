@@ -1,6 +1,4 @@
 var express = require('express');
-const fetch = require("node-fetch");
-var url = 'https://api.github.com';
 var CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 var CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 var app = express();

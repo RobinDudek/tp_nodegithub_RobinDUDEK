@@ -2,16 +2,18 @@ const path = require("path");
 const express = require("express");
 const http = require("http");
 const redis = require("redis");
+const fetch = require("node-fetch");
 
 const PUBLIC_FOLDER = path.join(__dirname, "../public");
 
+var url = 'https://api.github.com';
 const PORT = process.env.PORT || 5042;
 //const REDIS_PORT = process.env.REDIS_PORT || 6367;
 const REDIS_HOST =  process.env.REDIS_URL || '127.0.0.1';
 const REDIS_PORT = 6379;
 
-const CallApi = require('./CallApi');
-const githubApi = new CallApi();
+//const CallApi = require('./CallApi');
+//const githubApi = new CallApi();
 
 
 const app = express();
@@ -40,16 +42,16 @@ app.get("/repos", (req, res) => {
     } else {
       try {
         console.log("repos pas en cache");
-        //sinon j'appelle l'Api de Github
-        var json = await githubApi.getAllRepos()
-        .then(
+        fetch(url + '/search/repositories?q=stars:>=1000')
+        .then(res => res.json())
+        .then(json => {
           console.log("JSON:",  json);
           //on met en cache pendant une heure => 3600 secondes
           redisclient.set('repos', json);
           redisclient.expire('repos', 3600);
           //et j'envoie le résultat
           res.send(json);
-        );
+        });
       } catch(error) {
         console.log(error);
       }
