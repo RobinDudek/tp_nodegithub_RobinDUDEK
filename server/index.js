@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
-app.get("/repos", req, res) => {
+app.get("/repos", (req, res) => {
   console/log("route /repos");
   redisclient.get(repos, function(error, result){
     //si j'ai des données en cache sur la clé repos
