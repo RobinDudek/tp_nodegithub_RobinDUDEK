@@ -19,6 +19,8 @@ const server = http.createServer(app);
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
   console.log("route /");
+  //pour réinitialiser le cache au chargement de la page
+    redisclient.del('repos');
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
