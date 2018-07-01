@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.get("/repos", (req, res) => {
   console.log("route /repos");
   redisclient.get('repos', function(error, result){
-    if (err) throw err;
+    if (error) console.log(error);
       //si j'ai des données en cache sur la clé repos
     if(result !== null) {
       //Je renvoi direct le résultat
