@@ -22,6 +22,9 @@ console.log("hello");
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
   console.log("route /");
+  redisclient.del('repos', function(err, reply) {
+    console.log(reply);
+});
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
@@ -39,8 +42,11 @@ app.get("/repos", (req, res) => {
         console.log("repos pas en cache");
         //sinon j'appelle l'Api de Github
         var json = JSON.stringify(githubApi.getAllRepos());
+        console.log("JSON:",  json);
         //on met en cache pendant une heure => 3600 secondes
-        redisclient.set('repos', 3600, json);
+        redisclient.set('repos', json);
+
+        redisclient.expire('repos', 3600);
         //et j'envoie le résultat
         res.send(json);
       } catch(error) {
