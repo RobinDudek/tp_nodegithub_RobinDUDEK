@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const http = require("http");
-const Redis = require("redis");
+const redis = require('redis');
 
 const PUBLIC_FOLDER = path.join(__dirname, "../public");
 //const PORT = process.env.PORT || 5000;
@@ -15,7 +15,7 @@ const githubApi = new CallApi();
 
 
 const app = express();
-const redisclient = Redis.createClient();
+const redisclient = redis.createClient();
 const server = http.createServer(app);
 
 console.log("hello");
@@ -27,18 +27,18 @@ app.get("/", (req, res) => {
 
 app.get("/repos", (req, res) => {
   console.log("route /repos");
-  redisclient.get(repos, function(error, result){
+  redisclient.get('repos', function(error, result){
     //si j'ai des données en cache sur la clé repos
     if (err) throw err;
     if(result !== null) {
       //Je renvoi direct le résultat
-      res.send(repos);
+      res.send(result);
     } else {
       try {
         //sinon j'appelle l'Api de Github
         var json = githubApi.getAllRepos();
         //on met en cache pendant une heure => 3600 secondes
-        redisclient.setex(repos, 3600, JSON.stringify(json));
+        redisclient.setex('repos', 3600, JSON.stringify(json));
         //et j'envoie le résultat
         res.send(json);
       } catch(error) {
