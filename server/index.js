@@ -43,7 +43,7 @@ app.get("/repos", (req, res) => {
           .then(json => {
             console.log("JSON:",  json);
             //on met en cache pendant une heure => 3600 secondes
-            redisclient.set('repos', JSON.parse(json));
+            redisclient.set('repos', json);
             redisclient.expire('repos', 3600);
             //et j'envoie le résultat
             res.send(json);
