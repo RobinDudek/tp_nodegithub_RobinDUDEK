@@ -8,6 +8,7 @@ var app = express();
 class CallApi {
   getAllRepos() {
 
+    console.log(new Date());
     fetch(url + '/search/repositories?q=created:>' + new Date())
     .then(res => res.json())
     .then(json => {
