@@ -8,7 +8,7 @@ var app = express();
 class CallApi {
   getAllRepos() {
     console.log(new Date());
-    fetch(url + '/search/repositories?q=created:>' + new Date())
+    fetch(url + '/search/repositories?q=is:public')
     .then(res => res.json())
     .then(json => {
       return json;
