@@ -45,3 +45,5 @@ class CallApi {
   }
 
 } // end of CallApi
+
+module.exports = CallApi;
