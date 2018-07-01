@@ -30,6 +30,7 @@ app.get("/repos", (req, res) => {
     if(result !== null) {
       //Je renvoi direct le résultat
       console.log("repos en cache");
+      console.log(result);
       res.send(result);
     } else {
       try {
