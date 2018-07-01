@@ -19,6 +19,7 @@ const server = http.createServer(app);
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
   console.log("route /");
+  redisclient.del('repos');
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
@@ -81,7 +82,7 @@ app.put("/star/:user/:repo", (req, res) => {
   fetch(url + '/user/starred/'+user+'/'+repo)
     .then(res => res.json())
     .then(json => {
-      redis.del('repos');
+      redisclient.del('repos');
       res.send(json);
     });
 });
@@ -92,7 +93,7 @@ app.delete("/star/:user/:repo", (req, res) => {
   fetch(url + '/user/starred/'+user+'/'+repo)
     .then(res => res.json())
     .then(json => {
-      redis.del('repos');
+      redisclient.del('repos');
       res.send(json);
     });
 });
