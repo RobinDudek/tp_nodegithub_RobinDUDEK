@@ -1,42 +1,29 @@
 {
   "name": "tp_nodegithub_robindudek",
   "version": "1.0.0",
-  "description": "liste les repos github grâce à node JS",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "engine": {
-    "node": "8.11.x",
-    "npm": "5.6.x"
-  },
-  "scripts": {
-    "start": "node ./server/index.js",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "echo This runs afterwards."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
-  },
-  "keywords": [
-    "github",
-    "node",
-    "trendings",
-    "repos"
-  ],
-  "author": "RobinDUDEK",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK/issues"
-  },
-  "homepage": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK#readme",
+  "description": "",
+  "main": "./server/index.js",
   "dependencies": {
     "express": "^4.16.3",
     "http": "0.0.0",
     "https": "^1.0.0",
     "jquery": "^3.3.1",
+    "node": "^10.5.0",
     "path": "^0.12.7",
     "redis": "^2.8.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
+  },
+  "author": "Robin DUDEK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK/issues"
+  },
+  "homepage": "https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK#readme"
 }
