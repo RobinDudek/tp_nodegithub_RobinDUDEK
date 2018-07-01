@@ -9,7 +9,8 @@
       #reposList .repo:nth-child(2n+1) {
         color: #ffffff;
         background-color:#666666;
-      }#reposList .repo:nth-child(2n) {
+      }
+      #reposList .repo:nth-child(2n) {
         color: #ffffff;
         background-color:#333333;
       }
@@ -45,6 +46,7 @@
       });
     }
 
+//je pourrais mieux gérer cette fonction mais là il est 22h30 je n'ai plus le temps
     function starRepo(_method, _repo, _isGetMethod) {
       $.ajax({
         url: '/star/'+ user.id +'/'+_repo,

@@ -19,7 +19,6 @@ const server = http.createServer(app);
 // Assign a random channel to people opening the application
 app.get("/", (req, res) => {
   console.log("route /");
-  redisclient.del('repos');
   res.sendFile(path.join(PUBLIC_FOLDER, "index.html"));
 });
 
@@ -42,9 +41,9 @@ app.get("/repos", (req, res) => {
           .then(res => res.json())
           .then(json => {
             console.log("JSON:",  json);
-            //on met en cache pendant une heure => 3600 secondes
+            //on met en cache pendant une minute => 60 secondes
             redisclient.set('repos', json);
-            redisclient.expire('repos', 3600);
+            redisclient.expire('repos', 60);
             //et j'envoie le résultat
             res.send(json);
         });
