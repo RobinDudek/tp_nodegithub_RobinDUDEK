@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const http = require("http");
-const redis = require('redis');
+const redis = require("redis");
 
 const PUBLIC_FOLDER = path.join(__dirname, "../public");
 //const PORT = process.env.PORT || 5000;
@@ -15,7 +15,7 @@ const githubApi = new CallApi();
 
 
 const app = express();
-const redisclient = redis.createClient();
+const redisclient = redis.createClient(process.env.REDIS_URL);
 const server = http.createServer(app);
 
 console.log("hello");
