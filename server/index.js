@@ -58,7 +58,8 @@ redisclient.on('error', err => {
   console.log(err);
 });
 
-app.use(express.static(PUBLIC_FOLDER));
+console.log("on affiche le public folder");
+app.use(express.static('../public'));
 
 server.listen(PORT, () => {
     console.log(`Server started on port ${server.address().port}`);
