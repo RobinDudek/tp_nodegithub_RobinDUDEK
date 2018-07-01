@@ -14,7 +14,7 @@
     "start": "node ./server/index.js",
     "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
     "heroku-postbuild": "echo This runs afterwards."
-  }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobinDudek/tp_nodegithub_RobinDUDEK.git"
