@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>Liste des repos Trending</h1>
+
+    <div id="reposList"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+
+    // C'est le on Document ready de jQuery
+    $(function(){
+      console.log("hello");
+
+      $.ajax({
+        url: '/repos',
+        dataType: 'json',
+        type: 'GET',
+        success: function(data) {
+          console.log(data);
+        },
+        error: function
+      });
+    });
+
+
+    </script>
+  </body>
+</html>
