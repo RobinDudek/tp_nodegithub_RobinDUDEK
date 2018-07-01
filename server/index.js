@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const http = require("http");
+//const http = require("http");
 const redis = require("redis");
 
 const PUBLIC_FOLDER = path.join(__dirname, "../public");
@@ -19,7 +19,7 @@ const githubApi = new CallApi();
 
 const app = express();
 const redisclient = redis.createClient(process.env.REDIS_URL);
-const server = http.createServer(app);
+//const server = http.createServer(app);
 
 console.log("hello");
 // Assign a random channel to people opening the application
@@ -64,7 +64,7 @@ redisclient.on('error', err => {
 console.log("on affiche le public folder");
 app.use('/', express.static(PUBLIC_FOLDER));
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server started on port ${server.address().port}`);
 });
 
