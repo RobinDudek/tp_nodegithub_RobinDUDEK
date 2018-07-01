@@ -28,13 +28,15 @@ app.get("/", (req, res) => {
 app.get("/repos", (req, res) => {
   console.log("route /repos");
   redisclient.get('repos', function(error, result){
-    //si j'ai des données en cache sur la clé repos
     if (err) throw err;
+      //si j'ai des données en cache sur la clé repos
     if(result !== null) {
       //Je renvoi direct le résultat
+      console.log("repos en cache");
       res.send(result);
     } else {
       try {
+        console.log("repos pas en cache");
         //sinon j'appelle l'Api de Github
         //on met en cache pendant une heure => 3600 secondes
         redisclient.set('repos', 3600, JSON.stringify(githubApi.getAllRepos()));
@@ -45,6 +47,10 @@ app.get("/repos", (req, res) => {
       }
     }
   });
+});
+
+redisclient.on('connect', function() {
+    console.log('redis connected');
 });
 
 redisclient.on('error', err => {
