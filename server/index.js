@@ -94,7 +94,6 @@ app.delete("/star/:user/:repo", (req, res) => {
       redis.del('repos');
       res.send(json);
     });
-  );
 });
 
 redisclient.on('connect', function() {
